@@ -15,11 +15,22 @@ function reversal(str) {
 
 function alphabits(str) {
 	document.getElementById('alphabits').innerHTML =
-	"Alphabetized: " + str.split('').sort().join('');
+	"Alphabetized: " + str.split('')
+	.sort(function(a, b) {
+		var x = a.toLowerCase(),
+			y = b.toLowerCase();
+		if(x > y){
+			return 1;
+		}else if (x < y){
+			return -1;
+		}
+		return 0;
+	})
+	.join('');
 }
 
 function palindrome(str) {
-	if(str === reversal(str)) {
+	if(str.toLowerCase() === reversal(str).toLowerCase()) {
 		document.getElementById('palindrome').innerHTML =
 		"Your string is a palindrome"
 	}
